@@ -99,3 +99,10 @@ Si Railway no está disponible, el repositorio incluye `render.yaml` (Blueprint)
 4. Usa esa URL como `VITE_API_BASE_URL` en Vercel y haz Redeploy.
 
 Nota: en el plan gratuito el servicio se duerme tras 15 minutos sin tráfico y la primera petición tarda cerca de un minuto; además los logs viven en memoria, así que se reinician con cada arranque.
+
+## Producción
+
+- Frontend (Vercel): https://taller-proxy-frontend-weld.vercel.app
+- Backend (Render): https://taller-proxy-backend-2h5j.onrender.com (health: `/actuator/health`)
+
+El backend gratuito se duerme tras 15 minutos sin tráfico: la primera carga puede tardar hasta un minuto y el dashboard muestra un aviso mientras despierta.
