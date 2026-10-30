@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: taller-proxy-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: PAYMENT_FAILURE_RATE
+        value: "0.10"
+      - key: JAVA_OPTS
+        value: "-XX:MaxRAMPercentage=70 -Xss512k"

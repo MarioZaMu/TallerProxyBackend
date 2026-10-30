@@ -88,3 +88,14 @@ Parámetros de `/api/metrics/logs` (todos opcionales): `service`, `status` (`SUC
 2. **Settings -> Networking -> Generate Domain** y copia la URL.
 3. En **Variables** agrega `ALLOWED_ORIGINS` con la URL del frontend en Vercel.
 4. Verifica `https://<tu-dominio>/actuator/health`.
+
+## Alternativa: despliegue en Render
+
+Si Railway no está disponible, el repositorio incluye `render.yaml` (Blueprint) y usa el mismo `Dockerfile`.
+
+1. En <https://render.com> elige **New -> Blueprint** y conecta este repositorio.
+2. Cuando pida `ALLOWED_ORIGINS`, pon la URL del frontend en Vercel (o déjala vacía y se aceptará cualquier `https://*.vercel.app`).
+3. Al terminar el despliegue copia la URL `https://taller-proxy-backend.onrender.com` y verifica `/actuator/health`.
+4. Usa esa URL como `VITE_API_BASE_URL` en Vercel y haz Redeploy.
+
+Nota: en el plan gratuito el servicio se duerme tras 15 minutos sin tráfico y la primera petición tarda cerca de un minuto; además los logs viven en memoria, así que se reinician con cada arranque.
